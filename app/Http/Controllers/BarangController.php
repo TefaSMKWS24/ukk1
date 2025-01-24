@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 
 class BarangController extends Controller
 {
@@ -45,7 +47,7 @@ class BarangController extends Controller
 
         DB::table('barang')->insert($data);
 
-
+        return redirect()->view('barang.index');
     }
 
     /**
