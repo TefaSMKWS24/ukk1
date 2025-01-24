@@ -19,7 +19,7 @@ class BarangController extends Controller
      */
     public function create()
     {
-        //
+        return view('barang.create');
     }
 
     /**
@@ -27,7 +27,25 @@ class BarangController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'kode_barang' => 'required',
+            'nama_barang' => 'required',
+            'harga' => 'required',
+            'stok' => 'required',
+            'kode_kategori' => 'required',
+        ]);
+
+        $data = [
+            'kode_barang' => $request->kode_barang,
+            'nama_barang' => $request->nama_barang,
+            'harga' => $request->harga,
+            'stok' => $request->stok,
+            'kode_kategori' => $request->kode_kategori,
+        ];
+
+        DB::table('barang')->insert($data);
+
+
     }
 
     /**
